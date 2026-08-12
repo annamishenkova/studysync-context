@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudySync — Honest Hours study tracker</title>
+    <meta
+      name="description"
+      content="StudySync tracks honest study hours: Focus Guard measures real focused time instead of trusting a timer left running."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="StudySync — Honest Hours study tracker" />
+    <meta
+      property="og:description"
+      content="Focus Guard measures real focused time instead of trusting a timer left running."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root {
+        --bg: #0b1120;
+        --surface: #111a2e;
+        --border: #1f2b45;
+        --text: #e6ecf7;
+        --muted: #93a3bd;
+        --accent: #7dd3fc;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        line-height: 1.6;
+      }
+      main { max-width: 900px; margin: 0 auto; padding: 64px 24px 96px; }
+      h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; margin: 0 0 16px; }
+      h2 { margin: 48px 0 12px; font-size: 1.25rem; letter-spacing: 0.02em; }
+      p { color: var(--muted); margin: 0 0 16px; }
+      .lede { color: var(--text); font-size: 1.125rem; }
+      .clock {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        font-size: clamp(2.5rem, 9vw, 4.5rem);
+        margin: 24px 0 8px;
+      }
+      .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px 20px;
+      }
+      .card h3 { margin: 0 0 6px; font-size: 1rem; }
+      .card p { margin: 0; font-size: 0.95rem; }
+      ul { color: var(--muted); padding-left: 20px; }
+      a { color: var(--accent); }
+      footer { border-top: 1px solid var(--border); margin-top: 64px; padding-top: 20px; color: var(--muted); font-size: 0.9rem; }
+      .badge {
+        display: inline-block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--accent); border: 1px solid var(--border); border-radius: 999px; padding: 4px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="badge">Focus Guard</span>
+      <div class="clock">00:52:14</div>
+      <h1>Honest hours, not logged hours</h1>
+      <p class="lede">
+        StudySync is a daily study tool built around one idea: a timer left running is a lie.
+        Focus Guard watches whether you are actually present, credits allowlisted resources,
+        and marks anything it could not measure as unverified.
+      </p>
+
+      <h2>What it does</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Focus Guard timer</h3>
+          <p>Detects tab-aways, pauses or ends the session, and asks what an interruption meant.</p>
+        </div>
+        <div class="card">
+          <h3>Session receipts</h3>
+          <p>Every session shows clock time vs verified focused time, away time and departures.</p>
+        </div>
+        <div class="card">
+          <h3>Allowed resources</h3>
+          <p>Links the app opened to an allowlisted domain count as study, not distraction.</p>
+        </div>
+        <div class="card">
+          <h3>Physical work mode</h3>
+          <p>Off-screen work is credited conservatively at 75% and never claims to be measured.</p>
+        </div>
+        <div class="card">
+          <h3>Smart task board</h3>
+          <p>Kanban board with homework sync; honest minutes flow back to the card you worked on.</p>
+        </div>
+        <div class="card">
+          <h3>Coworking rooms</h3>
+          <p>QR/code invites, live presence and shared honest minutes with a study partner.</p>
+        </div>
+        <div class="card">
+          <h3>Subject Lab</h3>
+          <p>Interpreter, quizzes with LaTeX, analogies, formula lab, YouTube search (credit-free).</p>
+        </div>
+        <div class="card">
+          <h3>Works offline</h3>
+          <p>Timer, flashcards and homework queue changes locally and sync when you reconnect.</p>
+        </div>
+      </div>
+
+      <h2>How honest time is calculated</h2>
+      <ul>
+        <li>Sessions under 2 minutes are discarded as noise.</li>
+        <li>Away spans shorter than the noise window are ignored; longer ones are subtracted.</li>
+        <li>Allowlisted excursions are tracked separately and never subtracted.</li>
+        <li>Only sessions Focus Guard watched end-to-end are marked <em>verified</em>.</li>
+        <li>Physical and retro-logged sessions are always unverified.</li>
+      </ul>
+
+      <h2>Stack</h2>
+      <p>
+        React 19 + TanStack Start (file-based routing, server functions), Tailwind CSS v4 with
+        semantic dark-first tokens, Supabase for database, auth and realtime presence, and a PWA
+        service worker for offline use.
+      </p>
+
+      <footer>
+        StudySync · built for real daily use. See <a href="./CONTEXT.md">CONTEXT.md</a> and
+        <a href="./ARCHITECTURE.md">ARCHITECTURE.md</a> for the full context files.
+      </footer>
+    </main>
+  </body>
+</html>
